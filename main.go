@@ -174,6 +174,9 @@ func lookupWhoisAbuse(ip string) string {
 	cmd := exec.Command("timeout", "5", "whois", "-b", ip)
 	output, err := cmd.Output()
 	if err != nil {
+		if strings.Contains(err.Error(), "exit status 1") {
+			return ""
+		}
 		if strings.Contains(err.Error(), "exit status 124") {
 			return string(output)
 		}
@@ -193,6 +196,9 @@ func lookupWhoisAbuse(ip string) string {
 	cmd = exec.Command("timeout", "5", "whois", ip)
 	output, err = cmd.Output()
 	if err != nil {
+		if strings.Contains(err.Error(), "exit status 1") {
+			return ""
+		}
 		if !strings.Contains(err.Error(), "exit status 124") {
 			die("Full WHOIS lookup failed.", ExitWhoisError, string(output), err)
 		}
