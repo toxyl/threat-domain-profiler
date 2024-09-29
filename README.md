@@ -27,7 +27,7 @@ To install the Threat Domain Profiler, you need to have Go installed on your sys
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/threat-domain-profiler.git
+   git clone https://github.com/toxyl/threat-domain-profiler.git
    cd threat-domain-profiler
    ```
 
